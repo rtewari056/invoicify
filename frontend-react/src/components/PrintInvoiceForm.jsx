@@ -1,8 +1,129 @@
 // import { Link } from "react-router-dom";
-import { useRef, useContext } from "react";
+import { useRef, useContext, useState } from "react";
 import { useReactToPrint } from "react-to-print"; // Importing the library
 import DummySignature from "../images/dummySignature.png";
 import FormContext from "../Context/Form/FormContext";
+import Select from "react-select";
+
+const products = [
+  {
+    serialNumber: 1,
+    description: "Wordpress Template",
+    smDescription:
+      "Reference site about Lorem Ipsum, giving information on its origins.",
+    hsnCode: 7219,
+    gstRate: 18,
+    quantity: 1370,
+    rate: 395,
+    unit: "KGS",
+    amount: 541150,
+  },
+  {
+    serialNumber: 2,
+    description: "Maxwell Admin Template",
+    smDescription: "As well as a random Lipsum generator.",
+    hsnCode: 7219,
+    gstRate: 18,
+    quantity: 1370,
+    rate: 395,
+    unit: "KGS",
+    amount: 541150,
+  },
+  {
+    serialNumber: 3,
+    description: "Unify Admin Template",
+    smDescription: "Lorem ipsum has become the industry standard.",
+    hsnCode: 7219,
+    gstRate: 18,
+    quantity: 1370,
+    rate: 395,
+    unit: "KGS",
+    amount: 541150,
+  },
+  {
+    serialNumber: 4,
+    description: "Unify Admin Template",
+    smDescription: "Lorem ipsum has become the industry standard.",
+    hsnCode: 7219,
+    gstRate: 18,
+    quantity: 1370,
+    rate: 395,
+    unit: "KGS",
+    amount: 541150,
+  },
+  {
+    serialNumber: 5,
+    description: "Unify Admin Template",
+    smDescription: "Lorem ipsum has become the industry standard.",
+    hsnCode: 7219,
+    gstRate: 18,
+    quantity: 1370,
+    rate: 395,
+    unit: "KGS",
+    amount: 541150,
+  },
+  {
+    serialNumber: 6,
+    description: "Unify Admin Template",
+    smDescription: "Lorem ipsum has become the industry standard.",
+    hsnCode: 7219,
+    gstRate: 18,
+    quantity: 1370,
+    rate: 395,
+    unit: "KGS",
+    amount: 541150,
+  },
+  {
+    serialNumber: 7,
+    description: "Unify Admin Template",
+    smDescription: "Lorem ipsum has become the industry standard.",
+    hsnCode: 7219,
+    gstRate: 18,
+    quantity: 1370,
+    rate: 395,
+    unit: "KGS",
+    amount: 541150,
+  },
+  {
+    serialNumber: 8,
+    description: "Unify Admin Template",
+    smDescription: "Lorem ipsum has become the industry standard.",
+    hsnCode: 7219,
+    gstRate: 18,
+    quantity: 1370,
+    rate: 395,
+    unit: "KGS",
+    amount: 541150,
+  },
+  {
+    serialNumber: 9,
+    description: "Unify Admin Template",
+    smDescription: "Lorem ipsum has become the industry standard.",
+    hsnCode: 7219,
+    gstRate: 18,
+    quantity: 1370,
+    rate: 395,
+    unit: "KGS",
+    amount: 541150,
+  },
+  {
+    serialNumber: 10,
+    description: "Unify Admin Template",
+    smDescription: "Lorem ipsum has become the industry standard.",
+    hsnCode: 7219,
+    gstRate: 18,
+    quantity: 1370,
+    rate: 395,
+    unit: "KGS",
+    amount: 541150,
+  },
+];
+
+const options = [
+  { value: "chocolate cake", label: "Chocolate cake" },
+  { value: "strawberry", label: "Strawberry" },
+  { value: "vanilla", label: "Vanilla" },
+];
 
 const PrintInvoiceForm = () => {
   const context = useContext(FormContext);
@@ -18,126 +139,39 @@ const PrintInvoiceForm = () => {
     // }`,
   });
 
-  const products = [
-    {
-      serialNumber: 1,
-      description: "Wordpress Template",
-      smDescription:
-        "Reference site about Lorem Ipsum, giving information on its origins.",
-      hsnCode: 7219,
-      gstRate: 18,
-      quantity: 1370,
-      rate: 395,
-      unit: "KGS",
-      amount: 541150,
-    },
-    {
-      serialNumber: 2,
-      description: "Maxwell Admin Template",
-      smDescription: "As well as a random Lipsum generator.",
-      hsnCode: 7219,
-      gstRate: 18,
-      quantity: 1370,
-      rate: 395,
-      unit: "KGS",
-      amount: 541150,
-    },
-    {
-      serialNumber: 3,
-      description: "Unify Admin Template",
-      smDescription: "Lorem ipsum has become the industry standard.",
-      hsnCode: 7219,
-      gstRate: 18,
-      quantity: 1370,
-      rate: 395,
-      unit: "KGS",
-      amount: 541150,
-    },
-    {
-      serialNumber: 4,
-      description: "Unify Admin Template",
-      smDescription: "Lorem ipsum has become the industry standard.",
-      hsnCode: 7219,
-      gstRate: 18,
-      quantity: 1370,
-      rate: 395,
-      unit: "KGS",
-      amount: 541150,
-    },
-    {
-      serialNumber: 5,
-      description: "Unify Admin Template",
-      smDescription: "Lorem ipsum has become the industry standard.",
-      hsnCode: 7219,
-      gstRate: 18,
-      quantity: 1370,
-      rate: 395,
-      unit: "KGS",
-      amount: 541150,
-    },
-    {
-      serialNumber: 6,
-      description: "Unify Admin Template",
-      smDescription: "Lorem ipsum has become the industry standard.",
-      hsnCode: 7219,
-      gstRate: 18,
-      quantity: 1370,
-      rate: 395,
-      unit: "KGS",
-      amount: 541150,
-    },
-    {
-      serialNumber: 7,
-      description: "Unify Admin Template",
-      smDescription: "Lorem ipsum has become the industry standard.",
-      hsnCode: 7219,
-      gstRate: 18,
-      quantity: 1370,
-      rate: 395,
-      unit: "KGS",
-      amount: 541150,
-    },
-    {
-      serialNumber: 8,
-      description: "Unify Admin Template",
-      smDescription: "Lorem ipsum has become the industry standard.",
-      hsnCode: 7219,
-      gstRate: 18,
-      quantity: 1370,
-      rate: 395,
-      unit: "KGS",
-      amount: 541150,
-    },
-    {
-      serialNumber: 9,
-      description: "Unify Admin Template",
-      smDescription: "Lorem ipsum has become the industry standard.",
-      hsnCode: 7219,
-      gstRate: 18,
-      quantity: 1370,
-      rate: 395,
-      unit: "KGS",
-      amount: 541150,
-    },
-    {
-      serialNumber: 10,
-      description: "Unify Admin Template",
-      smDescription: "Lorem ipsum has become the industry standard.",
-      hsnCode: 7219,
-      gstRate: 18,
-      quantity: 1370,
-      rate: 395,
-      unit: "KGS",
-      amount: 541150,
-    },
-  ];
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleSearchableDropdown = (selectedOption) => {
+    setSelectedOption(selectedOption);
+    console.log(selectedOption);
+  };
 
   return (
     <div className="container my-3">
-      <button type="button" className="print-button" onClick={handlePrint}>
-        Download as PDF
-        <i className="fa fa-file ms-2" style={{ color: "red" }} />
-      </button>
+      <div className="d-flex justify-content-center">
+        <Select
+          placeholder="Select Invoice Number"
+          defaultValue={selectedOption} // Defalult value will be null
+          isClearable={true}
+          isSearchable={true}
+          options={options} // Dropdown values
+          styles={{
+            control: (styles) => ({ ...styles, height: "100%" }),
+            container: (provided) => ({ ...provided, width: "300px" }),
+          }} // Dropdown style
+          onChange={handleSearchableDropdown}
+        />
+
+        <button
+          type="button"
+          className="print-button ms-3"
+          disabled={selectedOption ? false : true}
+          onClick={handlePrint}
+        >
+          Download as PDF
+          <i className="fa fa-file ms-2" style={{ color: "red" }} />
+        </button>
+      </div>
 
       <div className="pdf-container my-3" ref={componentRef}>
         <div className="row">
@@ -150,34 +184,57 @@ const PrintInvoiceForm = () => {
                       <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         <div
                           className="heading-container"
-                          style={{
-                            borderBottom: "2px solid green",
-                            paddingBottom: "10px",
-                            marginBottom: "10px",
-                          }}
+                          // style={{
+                          //   borderBottom: "2px solid green",
+                          //   paddingBottom: "10px",
+                          //   marginBottom: "10px",
+                          // }}
                         >
                           <p
                             className="fst-italic text-success display-4"
                             style={{
                               display: "inline-block",
-                              borderBottom: "5px solid green",
+                              borderBottom: "3px solid green",
                               width: "fit-content",
                             }}
                           >
-                            {sellerData !== null ? sellerData.company.company_name : "NULL"}
+                            {sellerData !== null
+                              ? sellerData.company.company_name
+                              : "NULL"}
                           </p>
 
-                          <h6>{sellerData !== null ? sellerData.company.type : "NULL"}</h6>
-
-                          <h6>{sellerData !== null ? sellerData.company.address : "NULL"}</h6>
-
-                          <h6 className="text-primary">
-                            E-mail: {sellerData !== null ? sellerData.company.email : "NULL"}, Mob:{" "}
-                            {sellerData !== null ? sellerData.company.mobile : "NULL"}
+                          <h6>
+                            {sellerData !== null
+                              ? sellerData.company.type
+                              : "NULL"}
                           </h6>
 
-                          <h6>GSTIN: {sellerData !== null ? sellerData.company.GSTIN : "NULL"}</h6>
+                          <h6>
+                            {sellerData !== null
+                              ? sellerData.company.address
+                              : "NULL"}
+                          </h6>
+
+                          <h6 className="text-primary">
+                            E-mail:{" "}
+                            {sellerData !== null
+                              ? sellerData.company.email
+                              : "NULL"}
+                            , Mob:{" "}
+                            {sellerData !== null
+                              ? sellerData.company.mobile
+                              : "NULL"}
+                          </h6>
+
+                          <h6>
+                            GSTIN:{" "}
+                            {sellerData !== null
+                              ? sellerData.company.GSTIN
+                              : "NULL"}
+                          </h6>
                         </div>
+
+                        <hr class="border border-dark border-2 opacity-50"></hr>
                       </div>
                     </div>
 
@@ -185,85 +242,155 @@ const PrintInvoiceForm = () => {
                       className="mb-3 fw-semibold"
                       style={{
                         margin: "auto",
-                        borderBottom: "3px double",
+                        borderBottom: "3px solid black",
                         width: "fit-content",
                       }}
                     >
                       GST Invoice
                     </p>
 
-                    <div className="row" style={{ fontSize: "0.7rem" }}>
+                    <div className="row" style={{ fontSize: "1rem" }}>
                       <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                        <table className="table header-table m-0">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <h6>
-                                  <u>Buyer's Name & Address</u>
-                                </h6>
+                        <div className="table-responsive">
+                          <table className="table custom-table m-0">
+                            <tbody>
+                              <tr>
+                                <td className="p-0">
+                                  <table className="table custom-table m-0">
+                                    <tbody>
+                                      <tr>
+                                        <td>
+                                          <strong>
+                                            <u>Buyer's Name & Address</u>
+                                          </strong>
+                                        </td>
+                                      </tr>
 
-                                <strong>TEST INDUSTRIES PVT. LTD.</strong>
-                                <br />
-                                <span>
-                                  <strong>Works: </strong>
-                                  <span>NULL</span>
-                                </span>
-                                <br />
-                                <span>
-                                  <strong>PS: </strong>
-                                  <span>Domjur, Howrah, 711302</span>
-                                </span>
-                                <br />
-                              </td>
-                              <td>
-                                <span>
-                                  <strong>GST In No: </strong>
-                                  <span>22/22-23</span>
-                                </span>
-                                <br />
-                                <span>
-                                  <strong>Vender Code: </strong>
-                                  <span>......</span>
-                                </span>
-                                <br />
-                                <span>
-                                  <strong>E-Way Bill No: </strong>
-                                  <span>Null</span>
-                                </span>
-                                <br />
-                                <span>
-                                  <strong>Date: </strong>
-                                  <span>07-07-2022</span>
-                                </span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <span>
-                                  <strong>Buyers GST No.: </strong>
-                                  <span>NULL</span>
-                                </span>
-                              </td>
-                              <td>
-                                <span>
-                                  <strong>Challan No.: </strong>
-                                  <span>.......</span>
-                                </span>
-                                <br />
-                                <span>
-                                  <strong>Pur. Order No: </strong>
-                                  <span>NULL</span>
-                                </span>
-                                <br />
-                                <span>
-                                  <strong>Date: </strong>
-                                  <span>06-07-2022</span>
-                                </span>
-                                <br />
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                                      <tr>
+                                        <td>
+                                          <strong>
+                                            TEST INDUSTRIES PVT. LTD.
+                                          </strong>
+                                        </td>
+                                      </tr>
+
+                                      <tr>
+                                        <td>
+                                          <span>
+                                            <strong>
+                                              Howrah, Factory: Palora, P.O
+                                              Mahisrekh, P.S. Uluberia, Howrah -
+                                              711303
+                                            </strong>
+                                          </span>
+                                        </td>
+                                      </tr>
+
+                                      <tr>
+                                        <td>
+                                          <span>
+                                            <strong>Despatch Details: </strong>
+                                            <span>By Hand</span>
+                                          </span>
+                                        </td>
+                                      </tr>
+
+                                      <tr>
+                                        <td>
+                                          <span>
+                                            <strong>Buyers GST No: </strong>
+                                            <span>19AAGFJJFUSHJSO</span>
+                                          </span>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+
+                                <td className="p-0">
+                                  <table className="table custom-table m-0">
+                                    <tbody>
+                                      <tr>
+                                        <td>
+                                          <span>
+                                            <strong>GST Invoice No: </strong>
+                                            <span>22/22-23</span>
+                                          </span>
+                                        </td>
+
+                                        <td>
+                                          <span>
+                                            <strong>Date: </strong>
+                                            <span>07-07-2022</span>
+                                          </span>
+                                        </td>
+                                      </tr>
+
+                                      <tr>
+                                        <td colSpan={2}>
+                                          <span>
+                                            <strong>Vender Code: </strong>
+                                            <span>65468748774</span>
+                                          </span>
+                                        </td>
+                                      </tr>
+
+                                      <tr>
+                                        <td colSpan={2}>
+                                          <span>
+                                            <strong>E-Way Bill No: </strong>
+                                            <span>54894646878</span>
+                                          </span>
+                                        </td>
+                                      </tr>
+
+                                      <tr>
+                                        <td>
+                                          <span>
+                                            <strong>Work Order No: </strong>
+                                            <span>65564645</span>
+                                          </span>
+                                        </td>
+
+                                        <td>
+                                          <span>
+                                            <strong>Date: </strong>
+                                            <span>......</span>
+                                          </span>
+                                        </td>
+                                      </tr>
+
+                                      <tr>
+                                        <td>
+                                          <span>
+                                            <strong>PO. Refference No: </strong>
+                                            <span>LBIC/WO/75/22-23</span>
+                                          </span>
+                                        </td>
+
+                                        <td>
+                                          <span>
+                                            <strong>Date: </strong>
+                                            <span>......</span>
+                                          </span>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+
+                              {/* <tr>
+                                <td>
+                                  <span>
+                                    <strong>Despatch Details: </strong>
+                                    <span>By Hand</span>
+                                  </span>
+                                </td>
+                              </tr> */}
+                            </tbody>
+                          </table>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -370,7 +497,9 @@ const PrintInvoiceForm = () => {
                                   <span>
                                     <strong>BANK NAME: </strong>
                                     <span>
-                                      {sellerData !== null ? sellerData.bank.bank_name : "NULL"}
+                                      {sellerData !== null
+                                        ? sellerData.bank.bank_name
+                                        : "NULL"}
                                     </span>
                                   </span>
                                   <br />
@@ -386,14 +515,18 @@ const PrintInvoiceForm = () => {
                                   <span>
                                     <strong>IFSC Code: </strong>
                                     <span>
-                                      {sellerData !== null ? sellerData.bank.IFSC_Code : "NULL"}
+                                      {sellerData !== null
+                                        ? sellerData.bank.IFSC_Code
+                                        : "NULL"}
                                     </span>
                                   </span>
                                   <br />
                                   <span>
                                     <strong>Branch: </strong>
                                     <span>
-                                      {sellerData !== null ? sellerData.bank.branch : "NULL"}
+                                      {sellerData !== null
+                                        ? sellerData.bank.branch
+                                        : "NULL"}
                                     </span>
                                   </span>
                                   <br />

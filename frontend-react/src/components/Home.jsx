@@ -2,7 +2,7 @@ import InvoiceForm from "./InvoiceForm";
 
 const Home = () => {
   return (
-    <div className="container mt-5">
+    <div className="container">
       <InvoiceForm />
     </div>
   );

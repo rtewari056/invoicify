@@ -43,7 +43,10 @@ const FormState = (props) => {
   // CRUD operations
 
   // Send form data to database
-  const setData = async (name, description) => {
+  const sendFormData = async (formData) => {
+    // Destructuring from incoming object
+    const { name, description } = formData;
+
     const url = `${host}/api/setData`;
     const response = await fetch(url, {
       method: "POST",
@@ -75,7 +78,7 @@ const FormState = (props) => {
         sellerData,
         setSellerData,
         getSellerData,
-        setData,
+        sendFormData,
       }}
     >
       {props.children}
