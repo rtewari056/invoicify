@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const authenticateUser = require("../middleware/authenticateUser");
-const CompanyData = require("../models/CompanyData");
+const SellerData = require("../models/Seller");
 const { body, validationResult } = require("express-validator"); // Express validator
 
 router.post(
-  "/setCompanyData",
+  "/setSellerData",
   authenticateUser,
   [
     body("company.company_name", "Enter Company Name")
@@ -35,10 +35,10 @@ router.post(
       const { bank_name, accountNumber, IFSC_Code, branch } = req.body.bank;
 
       // Check database using company name, email and GSTIN if the data already exists
-      const companyDataExists = await CompanyData.findOne({
+      const SellerDataExists = await SellerData.findOne({
         "company.GSTIN": GSTIN, // FindOne() syntax for nested objects
       }).exec();
-      if (companyDataExists) {
+      if (SellerDataExists) {
         return res.status(409).json({
           success: false,
           statusCode: 409,
@@ -47,7 +47,8 @@ router.post(
       }
 
       // Store the new company data
-      await CompanyData.create({
+      await SellerData.create({
+        user: req.id, // To associate seller data with logged in user id
         company: { company_name, type, address, email, mobile, GSTIN },
         bank: { bank_name, accountNumber, IFSC_Code, branch },
       });

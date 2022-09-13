@@ -3,7 +3,7 @@ const router = express.Router();
 const authenticateUser = require("../middleware/authenticateUser");
 const Invoice = require("../models/Invoice"); // Importing Invoice model
 
-router.post("/setData", authenticateUser, async (req, res) => {
+router.post("/setInvoiceFormData", authenticateUser, async (req, res) => {
   try {
     const { name, description } = req.body; // Getting data from request body
 

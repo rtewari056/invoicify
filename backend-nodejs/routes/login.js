@@ -47,15 +47,6 @@ router.post(
         });
       }
 
-      // Check if the role is "admin" or not
-      if (userExists.role !== "admin") {
-        return res.status(403).json({
-          success: false,
-          statusCode: 403,
-          message: "You Are Not Authorized to Access This Page",
-        });
-      }
-
       // Create JWTs
       const accessToken = jwt.sign(
         { id: userExists.id, email: userExists.email },

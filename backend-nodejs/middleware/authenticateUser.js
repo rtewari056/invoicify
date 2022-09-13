@@ -27,7 +27,7 @@ function authenticateUser(req, res, next) {
             message: "Access Denied: Invalid token",
           });
         
-        // Setting user email and id for next steps
+        // Setting user email and id for next steps in every API call
         req.email = authData.email;
         req.id = authData.id;
         next();

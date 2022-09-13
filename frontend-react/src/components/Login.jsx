@@ -71,9 +71,6 @@ const Login = () => {
     } else if (json.success === false && json.statusCode === 400) {
       showAlert(json.message, "danger");
       navigate("/login");
-    } else if (json.success === false && json.statusCode === 403) {
-      showAlert(json.message, "danger");
-      navigate("/unauthorized");
     } else {
       showAlert(json.message, "danger");
       navigate("/serverError");

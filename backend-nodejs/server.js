@@ -27,10 +27,12 @@ app.use("/api/auth", require("./routes/register"));
 app.use("/api/auth", require("./routes/login"));
 app.use("/api/auth", require("./routes/logout"));
 
-// CRUD operations routes
-app.use("/api", require("./routes/setData"));
-app.use("/api", require("./routes/getCompanyData"));
-app.use("/api", require("./routes/setCompanyData"));
+// Seller CRUD operations routes
+app.use("/api", require("./routes/getSellerData"));
+app.use("/api", require("./routes/setSellerData"));
+
+// Invoice CRUD operations routes
+app.use("/api", require("./routes/setInvoiceFormData"));
 
 // If any other route except above routes, return below responses
 app.all("*", (req, res) => {

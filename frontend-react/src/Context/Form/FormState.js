@@ -24,7 +24,7 @@ const FormState = (props) => {
   };
 
   // Login and Logout
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   // Seller data
   const [sellerData, setSellerData] = useState(null);

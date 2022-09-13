@@ -2,7 +2,11 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 // Create model to fetch existing data
-const companyDataSchema = new Schema({
+const sellerSchema = new Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user", // To reference the ObjectId of "User" model in this model
+  },
   company: {
     company_name: { type: String, required: true },
     type: { type: String },
@@ -23,4 +27,4 @@ const companyDataSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model("CompanyData", companyDataSchema);
+module.exports = mongoose.model("Seller", sellerSchema);
