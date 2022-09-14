@@ -26,18 +26,39 @@ const FormState = (props) => {
   // Login and Logout
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-  // Seller data
-  const [sellerData, setSellerData] = useState(null);
+  const [sellerData, setSellerData] = useState(null); // Seller data
+  const [buyerOptions, setBuyerOptions] = useState(null); // Buyer data
 
   // Get seller data
   const getSellerData = async () => {
-    const url = `${host}/api/getCompanyData/${process.env.REACT_APP_SELLER_DATA_ID}`;
+    const url = `${host}/api/getSellerData`;
     const response = await fetch(url, {
       method: "GET",
       credentials: "include",
     });
     const json = await response.json();
-    setSellerData(json.companyData);
+    setSellerData(json.sellerData);
+  };
+
+  // Get seller data
+  const getBuyerData = async () => {
+    const url = `${host}/api/buyer/getBuyerData`;
+    const response = await fetch(url, {
+      method: "GET",
+      credentials: "include",
+    });
+    const json = await response.json();
+
+    const buyerOptions = json.buyerData.map((obj) => {
+      let newObj = {};
+      newObj.value = obj.name;
+      newObj.label = obj.name;
+      newObj.buyerAddress = obj.address;
+      newObj.buyerGST_Number = obj.GSTIN;
+      return newObj;
+    });
+    
+    setBuyerOptions(buyerOptions);
   };
 
   // CRUD operations
@@ -78,6 +99,8 @@ const FormState = (props) => {
         sellerData,
         setSellerData,
         getSellerData,
+        buyerOptions,
+        getBuyerData,
         sendFormData,
       }}
     >

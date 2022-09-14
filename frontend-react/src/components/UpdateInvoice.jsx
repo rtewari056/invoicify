@@ -596,8 +596,7 @@ const UpdateInvoice = () => {
   return (
     <div className="container my-5">
       <div className="row mb-5">
-        <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-          <form className="d-flex m-auto w-50" role="search">
+        <div className="d-flex justify-content-center">
             <input
               className="form-control me-2"
               type="search"
@@ -605,8 +604,8 @@ const UpdateInvoice = () => {
               onChange={handleSearch}
               placeholder="Search"
               aria-label="Search"
+              style={{width: "300px"}}
             />
-          </form>
         </div>
       </div>
 

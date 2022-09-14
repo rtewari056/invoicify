@@ -1,17 +1,17 @@
 const express = require("express");
 const router = express.Router();
-const authenticateUser = require("../middleware/authenticateUser");
-const SellerData = require("../models/Seller");
+const authenticateUser = require("../../middleware/authenticateUser");
+const Seller = require("../../models/Seller");
 const { body, validationResult } = require("express-validator"); // Express validator
 
 router.post(
   "/setSellerData",
   authenticateUser,
   [
-    body("company.company_name", "Enter Company Name")
+    body("seller.seller_name", "Enter Seller Name")
       .isLength({ min: 1 })
       .exists(),
-    body("company.GSTIN", "Invalid GSTIN Number").isLength({
+    body("seller.GSTIN", "Invalid GSTIN Number").isLength({
       min: 15,
       max: 15,
     }),
@@ -30,26 +30,26 @@ router.post(
       }
 
       // Destructuring from incoming request
-      const { company_name, type, address, email, mobile, GSTIN } =
-        req.body.company;
+      const { seller_name, type, address, email, mobile, GSTIN } =
+        req.body.seller;
       const { bank_name, accountNumber, IFSC_Code, branch } = req.body.bank;
 
-      // Check database using company name, email and GSTIN if the data already exists
-      const SellerDataExists = await SellerData.findOne({
-        "company.GSTIN": GSTIN, // FindOne() syntax for nested objects
+      // Check database using GSTIN if the data already exists
+      const SellerDataExists = await Seller.findOne({
+        "seller.GSTIN": GSTIN, // FindOne() syntax for nested objects
       }).exec();
       if (SellerDataExists) {
         return res.status(409).json({
           success: false,
           statusCode: 409,
-          message: "Sorry! Company with this GSTIN already exists",
+          message: "Sorry! Seller with this GSTIN already exists",
         });
       }
 
-      // Store the new company data
+      // Store the new seller data
       await SellerData.create({
         user: req.id, // To associate seller data with logged in user id
-        company: { company_name, type, address, email, mobile, GSTIN },
+        seller: { seller_name, type, address, email, mobile, GSTIN },
         bank: { bank_name, accountNumber, IFSC_Code, branch },
       });
 

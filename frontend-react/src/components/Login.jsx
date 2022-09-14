@@ -4,7 +4,7 @@ import FormContext from "../Context/Form/FormContext";
 
 const Login = () => {
   const context = useContext(FormContext);
-  const { host, showAlert, loading, setLoading, setIsLoggedIn, getSellerData } = context;
+  const { host, showAlert, loading, setLoading, setIsLoggedIn, getSellerData, getBuyerData } = context;
 
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   let navigate = useNavigate();
@@ -65,6 +65,7 @@ const Login = () => {
       // Save the auth token in our react app
       showAlert("Logged in successfully", "success");
       getSellerData(); // To get seller data
+      getBuyerData(); // To get buyer data
       setIsLoggedIn(true); // Admin logged in successfully
       localStorage.setItem("isLoggedIn", "true");
       navigate("/");

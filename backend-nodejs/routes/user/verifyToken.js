@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
-const authenticateUser = require("../middleware/authenticateUser");
+const authenticateUser = require("../../middleware/authenticateUser");
 
 // ROUTE 1: Renew access token using: GET '/api/auth/renewAccessToken'. Login required
 router.get("/renewAccessToken", authenticateUser, async (req, res) => {

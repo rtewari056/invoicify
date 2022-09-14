@@ -147,7 +147,7 @@ const PrintInvoiceForm = () => {
   };
 
   return (
-    <div className="container my-3">
+    <div className="container my-5">
       <div className="d-flex justify-content-center">
         <Select
           placeholder="Select Invoice Number"
@@ -164,7 +164,7 @@ const PrintInvoiceForm = () => {
 
         <button
           type="button"
-          className="print-button ms-3"
+          className="btn btn-outline-dark ms-3"
           disabled={selectedOption ? false : true}
           onClick={handlePrint}
         >
@@ -199,42 +199,42 @@ const PrintInvoiceForm = () => {
                             }}
                           >
                             {sellerData !== null
-                              ? sellerData.company.company_name
+                              ? sellerData.seller.seller_name
                               : "NULL"}
                           </p>
 
                           <h6>
                             {sellerData !== null
-                              ? sellerData.company.type
+                              ? sellerData.seller.type
                               : "NULL"}
                           </h6>
 
                           <h6>
                             {sellerData !== null
-                              ? sellerData.company.address
+                              ? sellerData.seller.address
                               : "NULL"}
                           </h6>
 
                           <h6 className="text-primary">
                             E-mail:{" "}
                             {sellerData !== null
-                              ? sellerData.company.email
+                              ? sellerData.seller.email
                               : "NULL"}
                             , Mob:{" "}
                             {sellerData !== null
-                              ? sellerData.company.mobile
+                              ? sellerData.seller.mobile
                               : "NULL"}
                           </h6>
 
                           <h6>
                             GSTIN:{" "}
                             {sellerData !== null
-                              ? sellerData.company.GSTIN
+                              ? sellerData.seller.GSTIN
                               : "NULL"}
                           </h6>
                         </div>
 
-                        <hr class="border border-dark border-2 opacity-50"></hr>
+                        <hr className="border border-dark border-2 opacity-50"></hr>
                       </div>
                     </div>
 
@@ -536,7 +536,7 @@ const PrintInvoiceForm = () => {
                                     for{" "}
                                     <span className="fst-italic">
                                       {sellerData !== null
-                                        ? sellerData.company.company_name
+                                        ? sellerData.seller.seller_name
                                         : "NULL"}
                                     </span>
                                   </h6>

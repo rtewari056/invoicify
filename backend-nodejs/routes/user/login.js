@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { body, validationResult } = require("express-validator"); // Express validator
-const User = require("../models/User"); // Importing User model
+const User = require("../../models/User"); // Importing User model
 
 // ROUTE 2: Authenticate a user using: POST '/api/auth/login'. No login required
 router.post(

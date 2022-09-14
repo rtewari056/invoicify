@@ -7,13 +7,13 @@ const sellerSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "user", // To reference the ObjectId of "User" model in this model
   },
-  company: {
-    company_name: { type: String, required: true },
+  seller: {
+    seller_name: { type: String, required: true },
     type: { type: String },
     address: { type: String, required: true },
     email: { type: String, required: true },
     mobile: { type: String, required: true },
-    GSTIN: { type: String, required: true },
+    GSTIN: { type: String, required: true, unique: true },
   },
   bank: {
     bank_name: { type: String },

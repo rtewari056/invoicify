@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const { body, validationResult } = require("express-validator"); // Importing "body" and "validationResult" Express validator
-const User = require("../models/User"); // Importing User model
+const User = require("../../models/User"); // Importing User model
 
 // ROUTE 1: Create a User using: POST '/api/createuser'. No login required
 router.post(

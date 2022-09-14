@@ -9,10 +9,9 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://192.168.1.10:3000"],
+    origin: true,
     credentials: true, // For receiving cookies,
     methods: "GET, POST, PUT, DELETE", // Only these requests will support
-    preflightContinue: true, // Delete this
   })
 );
 app.use(cookieParser());
@@ -22,14 +21,18 @@ connectToMongo(); // Calling the function to connect with our database
 const PORT = process.env.PORT || 8080;
 
 // Auth routes
-app.use("/api/auth", require("./routes/verifyToken"));
-app.use("/api/auth", require("./routes/register"));
-app.use("/api/auth", require("./routes/login"));
-app.use("/api/auth", require("./routes/logout"));
+app.use("/api/auth", require("./routes/user/verifyToken"));
+app.use("/api/auth", require("./routes/user/register"));
+app.use("/api/auth", require("./routes/user/login"));
+app.use("/api/auth", require("./routes/user/logout"));
 
 // Seller CRUD operations routes
-app.use("/api", require("./routes/getSellerData"));
-app.use("/api", require("./routes/setSellerData"));
+app.use("/api/seller", require("./routes/seller/getSellerData"));
+app.use("/api/seller", require("./routes/seller/setSellerData"));
+
+// Buyer CRUD operations routes
+app.use("/api/buyer", require("./routes/buyer/getBuyerData"));
+app.use("/api/buyer", require("./routes/buyer/setBuyerData"));
 
 // Invoice CRUD operations routes
 app.use("/api", require("./routes/setInvoiceFormData"));
