@@ -2,6 +2,8 @@ import { useState, useContext } from "react";
 import FormContext from "../Context/Form/FormContext";
 import { useNavigate } from "react-router-dom";
 import Select from "react-select";
+import currentDate from "../Utility_Functions/currentDate";
+import InvoiceTable from "./InvoiceTable";
 
 const InvoiceForm = () => {
   const context = useContext(FormContext);
@@ -35,6 +37,14 @@ const InvoiceForm = () => {
 
   const [formData, setFormData] = useState({
     dispatch_Details: "",
+    GST_InvoiceNumber: "",
+    todayDate: currentDate(),
+    venderCode: "",
+    E_WayBillNumber: "",
+    workOrderNumber: "",
+    date1: "",
+    PO_RefferenceNumber: "",
+    date2: "",
   });
 
   async function formSubmit(e) {
@@ -44,8 +54,6 @@ const InvoiceForm = () => {
     formData.buyerName = selectedValue;
     formData.buyerAddress = buyerAddress;
     formData.buyerGST_Number = buyerGST_Number;
-
-    console.log(formData);
 
     const json = await sendFormData(formData); // addData returns a json data
 
@@ -65,6 +73,13 @@ const InvoiceForm = () => {
     setBuyerGST_Number("");
     setFormData({
       dispatch_Details: "",
+      GST_InvoiceNumber: "",
+      venderCode: "",
+      E_WayBillNumber: "",
+      workOrderNumber: "",
+      date1: "",
+      PO_RefferenceNumber: "",
+      date2: "",
     });
   }
 
@@ -89,7 +104,7 @@ const InvoiceForm = () => {
     <form className="row g-3 my-5" onSubmit={formSubmit}>
       <h1 className="text-center fst-italic mb-3">GST INVOICE FORM</h1>
 
-      <div className="col-md-5">
+      <div className="col-md-3">
         <label htmlFor="buyerName" className="form-label">
           Buyer's Name
         </label>
@@ -147,6 +162,120 @@ const InvoiceForm = () => {
           value={formData.dispatch_Details}
         />
       </div>
+
+      <div className="col-md-2">
+        <label htmlFor="GST_InvoiceNumber" className="form-label">
+        GST Invoice No
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          id="GST_InvoiceNumber"
+          name="GST_InvoiceNumber"
+          onChange={handleFormData}
+          value={formData.GST_InvoiceNumber}
+        />
+      </div>
+
+      <div className="col-md-2">
+        <label htmlFor="todayDate" className="form-label">
+          Date
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          id="todayDate"
+          name="todayDate"
+          onChange={handleFormData}
+          value={formData.todayDate}
+        />
+      </div>
+
+      <div className="col-md-2">
+        <label htmlFor="venderCode" className="form-label">
+        Vender Code
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          id="venderCode"
+          name="venderCode"
+          onChange={handleFormData}
+          value={formData.venderCode}
+        />
+      </div>
+
+      <div className="col-md-2">
+        <label htmlFor="E_WayBillNumber" className="form-label">
+        E-Way Bill Number
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          id="E_WayBillNumber"
+          name="E_WayBillNumber"
+          onChange={handleFormData}
+          value={formData.E_WayBillNumber}
+        />
+      </div>
+
+      <div className="col-md-2">
+        <label htmlFor="workOrderNumber" className="form-label">
+        Work Order Number
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          id="workOrderNumber"
+          name="workOrderNumber"
+          onChange={handleFormData}
+          value={formData.workOrderNumber}
+        />
+      </div>
+
+      <div className="col-md-2">
+        <label htmlFor="date1" className="form-label">
+          Date 1
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          id="date1"
+          name="date1"
+          onChange={handleFormData}
+          value={formData.date1}
+        />
+      </div>
+
+      <div className="col-md-2">
+        <label htmlFor="PO_RefferenceNumber" className="form-label">
+        PO. Refference Number
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          id="PO_RefferenceNumber"
+          name="PO_RefferenceNumber"
+          onChange={handleFormData}
+          value={formData.PO_RefferenceNumber}
+        />
+      </div>
+
+      <div className="col-md-2">
+        <label htmlFor="date2" className="form-label">
+          Date 2
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          id="date2"
+          name="date2"
+          onChange={handleFormData}
+          value={formData.date2}
+        />
+      </div>
+
+      <InvoiceTable/>
 
       <div className="col-12">
         <button type="submit" className="btn btn-primary">
