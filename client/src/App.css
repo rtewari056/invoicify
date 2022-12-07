@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: hsl(213deg 85% 97%);
+}
+
+.auth__form {
+  margin: auto;
+  width: 360px;
+  height: min-content;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.auth__form Button {
+  display: block;
+  width: 100%;
+}
+
+.email__heading {
+  font-weight: 500;
+}
+
+#profilePicUpload {
+  height: 130px;
+  width: 130px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+#profileModal {
+  height: 130px;
+  width: 130px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+#profileDropdownIcon {
+  height: 40px;
+  width: 40px;
+}
